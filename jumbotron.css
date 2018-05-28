@@ -1,0 +1,71 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+	background-image: url('images/background.jpg');
+	background-size: cover;
+	padding-top: 100px;
+}
+
+.box-radius {
+	background-color:#090;   /* This color is green*/
+	width: 100%;
+	padding: 80px;
+	border-radius: 100%;
+	text-align: center;
+	margin-bottom: 10px
+}
+
+.box-radius.blue {
+	background: blue;
+}
+
+
+.box-radius.green {
+	background: #009900;
+}
+
+.box-radius.orange {
+	background: orange;
+}
+
+
+
+.box-radius img {
+	width: 100%;
+}
+
+.box-radius span {
+	font-size: 30px;
+	color: white;
+}
+
+
+.pink-hr {
+	margin-bottom: 20px;
+	border-color: #000;
+}
+
+
+.item img {
+width: 100%;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 480px)
+{
+	.box-radius span {
+	font-size: 25px;
+	color: Red;}
+
+
+}
