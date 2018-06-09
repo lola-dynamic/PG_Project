@@ -4,6 +4,13 @@ body {
   padding-bottom: 20px;
 }
 
+/*#image-wrapper {*/
+	/*width: 40px;*/
+	/*!*position: relative;*!*/
+	/*left: 50px;*/
+	/*top: 30px;*/
+/*}*/
+
 .jumbotron {
 	background-image: url('images/background.jpg');
 	background-size: cover;

@@ -63,7 +63,7 @@ if (isset($_POST['submit_form'])) {
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Contact Us | PINK Project</title>
+    <title>PG SERMINAR PORTAL</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -74,107 +74,164 @@ if (isset($_POST['submit_form'])) {
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+      <script src="js/my_js.js"></script>
+<!--      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+<!--      <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
 
   </head>
 
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-info navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Graft Pink</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-            <li><a href="./">About</a></li>
-            <li><a href="../navbar-fixed-top/">Services</a></li>
-             <li><a href="../navbar-fixed-top/">Contact</a></li>
-             <li><a href="../navbar-fixed-top/" class=" btn btn-danger"> <i class="glyphicon glyphicon-user"></i>Log In</a></li>
-          </ul>
-        </div><!--/.navbar-collapse -->
+       <?php require('header.php');?>
       </div>
     </nav>
+
+    <p id="demo"></p>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron text-center">
       <div class="container">
-        <h1>Contact Us</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Leave a message &raquo;</a></p>
+        <h3>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING<br> OBAFEMI AWOLOWO UNIVERSITY, ILE-IFE, NIGERIA<br>
+        POSTGRADUATE SEMINAR FORM</h3>
       </div>
     </div>
 
-    <div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="images/slide1.jpg" alt="oau-photo">
+                <div class="carousel-caption">
+                    <h3>Welcome to OAU</h3>
+                    <p>PG Serminar page</p>
+                </div>
+            </div>
 
-      <h3>Registration Form</h3>
-      <p>Kindly fill the form below to reach you</p>
-      <hr class="pink hr">
+            <div class="item">
+                <img src="images/oauf.jpg" alt="oau- photo">
+                <div class="carousel-caption">
+                    <h3>Welcome to OAU</h3>
+                    <p>PG Serminar page</p>
+                </div>
+            </div>
 
-      <form class="" method="POST" enctype="" action="">
-        
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" class="form-control" name="first_name" required="required">
+            <div class="item">
+                <img src="images/slide1.jpg" alt="oau-photo">
+                <div class="carousel-caption">
+                    <h3>Welcome to OAU</h3>
+                    <p>PG Serminar page</p>
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" class="form-control" name="last_name" required="required">
-        </div>
+        <footer class="">
+            <?php require('footer.php');?>
+        </footer>
 
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" class="form-control" name="email" required="required">
-        </div>
 
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" class="form-control" name="phone" required="required">
-        </div>
+        <!--    <div class="container">-->
+<!---->
+<!---->
+<!--      <h3>Registration Form</h3>-->
+<!--      <p>Kindly fill the form below to reach you</p>-->
+<!--      <hr class="pink hr">-->
+<!---->
+<!--      <form class="" method="POST" enctype="" action="">-->
+<!--        -->
+<!--        <div class="form-group">-->
+<!--          <label>First Name</label>-->
+<!--          <input type="text" class="form-control" name="first_name" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>Last Name</label>-->
+<!--          <input type="text" class="form-control" name="last_name" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>Email Address</label>-->
+<!--          <input type="email" class="form-control" name="email" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>Phone Number</label>-->
+<!--          <input type="tel" class="form-control" name="phone" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>Password</label>-->
+<!--          <input type="password" class="form-control" name="password" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>User Name</label>-->
+<!--          <input type="text" class="form-control" name="user_name" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>Date Of Birth</label>-->
+<!--          <input type="date" class="form-control" name="dob" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>Address</label>-->
+<!--          <textarea class="form-control" name="address" placeholder="Please Enter Your Address here"></textarea>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="form-group">-->
+<!--          <label>State Of Origin</label>-->
+<!--          <input type="text" class="form-control" name="state" required="required">-->
+<!--        </div>-->
+<!---->
+<!--        <button class="btn btn-success btn-block" name="submit_form">Submit</button>-->
+<!---->
+<!--      </form>-->
+<!---->
+<!--    </div>-->
 
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" name="password" required="required">
-        </div>
 
-        <div class="form-group">
-          <label>User Name</label>
-          <input type="text" class="form-control" name="user_name" required="required">
-        </div>
+<!--        javascript codes go here-->
+        <script>
+            function myFunction() {
+                var form;
+                var name = prompt("Please enter your name:");
+                var regno = prompt("enter your registration no:");
+                var password = prompt("enter your password:");
 
-        <div class="form-group">
-          <label>Date Of Birth</label>
-          <input type="date" class="form-control" name="dob" required="required">
-        </div>
+                if (name == null || name == "" && regno == null || regno == "" && password == null || password == "") {
+                    alert("You have not fill up the fields");
+                } else {
+                    form = "Hello" + name + ",You are welcome to seminar page!";
+                }
+                document.getElementById("demo").innerHTML = form;
+            // <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
+            //         <form method="post" action="/action_page_post.php">
+            //         <div>
+            //         <h3>Login information</h3>
+            //     <label for="usrnm" class="ui-hidden-accessible">Username:</label>
+            //     <input type="text" name="user" id="usrnm" placeholder="Username">
+            //         <label for="pswd" class="ui-hidden-accessible">Password:</label>
+            //     <input type="password" name="passw" id="pswd" placeholder="Password">
+            //         <label for="log">Keep me logged in</label>
+            //     <input type="checkbox" name="login" id="log" value="1" data-mini="true">
+            //         <input type="submit" data-inline="true" value="Log in">
+            //         </div>
+            //         </form>
+            //         </div>
 
-        <div class="form-group">
-          <label>Address</label>
-          <textarea class="form-control" name="address" placeholder="Please Enter Your Address here"></textarea>
-        </div>
+            }
+                    </script>
 
-        <div class="form-group">
-          <label>State Of Origin</label>
-          <input type="text" class="form-control" name="state" required="required">
-        </div>
-
-        <button class="btn btn-success btn-block" name="submit_form">Submit</button>
-
-      </form>
-
-    </div>
-
-    <footer>
-      <p>&copy; 2016 Company, Inc.</p>
-    </footer>
 
 
 
