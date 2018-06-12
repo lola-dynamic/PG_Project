@@ -139,7 +139,7 @@ if (isset($_POST['submit_form'])) {
         </footer>
 
 
-        <!--    <div class="container">-->
+<!--            <div class="container">-->
 <!---->
 <!---->
 <!--      <h3>Registration Form</h3>-->

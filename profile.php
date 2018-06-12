@@ -119,51 +119,72 @@ if (isset($_POST['submit_form'])) {
 </div>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+<!--    <!-- Indicators -->-->
+<!--    <ol class="carousel-indicators">-->
+<!--        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+<!--        <li data-target="#myCarousel" data-slide-to="1"></li>-->
+<!--        <li data-target="#myCarousel" data-slide-to="2"></li>-->
+<!--    </ol>-->
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <img src="images/slide1.jpg" alt="oau-photo">
-            <div class="carousel-caption">
-                <h3>Welcome to OAU</h3>
-                <p>PG Serminar page</p>
-            </div>
-        </div>
 
-        <div class="item">
-            <img src="images/oauf.jpg" alt="oau- photo">
-            <div class="carousel-caption">
-                <h3>Welcome to OAU</h3>
-                <p>PG Serminar page</p>
-            </div>
-        </div>
+                <div class="container">
+                    <p>SEMINAR FORM<span class="fa fa-2x fa-pencil"></span></div></p>
+                <form class="" method="POST" enctype="" action="">
+                    <div class="form-group">
+                        <label>First Name:</label>
+                        <input type="text" class="form-control" required placeholder="FirstName">
+                    </div>
 
-        <div class="item">
-            <img src="images/slide1.jpg" alt="oau-photo">
-            <div class="carousel-caption">
-                <h3>Welcome to OAU</h3>
-                <p>PG Serminar page</p>
+                   <div class="form-group">
+                       <label>Last Name:</label>
+                       <input type="text" class="form-control" required placeholder="LastName">
+                   </div>
+
+                    <div class="form-group">
+                        <label>Middle Name:</label>
+                        <input type="text" class="form-control" required placeholder="MiddleName">
+                    </div>
+                    <div class="form-group">
+                        <label>Reg Number:</label>
+                        <input type="text" class="form-control" required placeholder="Regnumber">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Leave Of Absence:</label>
+                        <select>
+                            <option value="selectoption" selected>Select Any Option</option>
+
+                            <option value="no leave of absence">NO</option>
+                            <option value="No of Semester(s)">1</option>
+                            <option value="No of Semester(s)">2</option>
+                            <option value="No of Semester(s)">3</option>
+                            <option value="No of Semester(s)">4</option>
+                            <option value="No of Semester(s)">5</option>
+                        </select></br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Submission Date:</label>
+                        <input type="text" class="form-control" required placeholder="submissiondate">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Title:</label>
+                        <textarea class="form-control" name="address" placeholder="Project Title">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Seminar Type:</label>
+                        <input type="text" class="form-control" required placeholder="submissiondate">
+                    </div>
+
+                    <button type="sign-up-now" class="btn btn-success form-group">Sign Up Now</button>
+                </form>
             </div>
-        </div>
-    </div>
+
 
     <footer>
-        <div class="footer">
-            <div class="row">
-                <div class ="col-md-4"><p>Examination Time Table<br>Contact Us</br><br>Student Help</br><br>Staff Help</b></p></div>
-                <div class="col-md-4"><p>Privacy Statement<br>Term And Condition of Use</br><br>Legal Notice</br><br>FAQS</br><br>Lecture Time Table</br></p>
-                </div>
-                <div class= "col-md-4"> <img src="images/remita-payment-logo-vertical.png"> </div>
-            </div>
-            <div class="bottom"><p>&copy;2016- 2017 Obafemi Awolowo University</p>
-            </div>
-        </div>
+       <?php require ('footer.php');?>
     </footer>
 
 
