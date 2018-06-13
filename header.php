@@ -30,33 +30,24 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="js/my_js.js"></script>
-    <!--      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
-    <!--      <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
 
 </head>
-
-<div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    <!--          <a class="navbar-brand" href="#">Graft Pink</a>-->
-    <div id="image-wrapper">
+<div class="container">
+    <div class="navbar-header">
         <div id="logo"><img src="images/oaulogo.png" class="img-responsive"></div>
     </div>
 
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="index.php">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="./">About Us</a></li>
+            <li><a href="../navbar-fixed-top/">Contact Us</a></li>
+            <li><a href="profile.php" data-rel="popup" class="btn btn-danger" onclick="myFunction()"> <i class="glyphicon glyphicon-user"></i>Sign Up</a></li>
+            <li><a href="profile.php" class=" btn btn-success"> <i class="glyphicon glyphicon-user"></i>Log In</a></li>
+        </ul>
+    </div>
 </div>
-<div id="navbar" class="navbar-collapse collapse">
-    <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="./">About Us</a></li>
-        <li><a href="../navbar-fixed-top/">Contact Us</a></li>
-        <li><a href="profile.php/navbar-fixed-top" data-rel="popup" class="btn btn-danger" onclick="myFunction()"> <i class="glyphicon glyphicon-user"></i>Sign Up</a></li>
-        <li><a href="profile.php/navbar-fixed-top/" class=" btn btn-success"> <i class="glyphicon glyphicon-user"></i>Log In</a></li>
-    </ul>
-</div><!--/.navbar-collapse -->
+
 
 
 </html>

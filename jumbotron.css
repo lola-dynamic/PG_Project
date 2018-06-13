@@ -4,13 +4,6 @@ body {
   padding-bottom: 20px;
 }
 
-/*#image-wrapper {*/
-	/*width: 40px;*/
-	/*!*position: relative;*!*/
-	/*left: 50px;*/
-	/*top: 30px;*/
-/*}*/
-
 #logo{
 	float:left;
 	width: 90px;
@@ -70,6 +63,40 @@ body {
 
 .item img {
 width: 100%;
+}
+
+nav{
+    background:#00375e;
+    height: 15%;
+    margin-top: 1%;
+}
+#navbar{
+    margin-top: 2%;
+}
+
+h3, p {
+    color: #16507c;
+    text-align: center;
+}
+
+.form{
+    max-width: 20%;
+    margin: 0 auto;
+    border: 0.5px solid white;
+}
+
+.seminar_form{
+    background: #aab6c4;
+}
+
+.form-group{
+    width: 40%;
+    margin: 0 auto;
+}
+
+.footer{
+    background:#000000;
+    margin-top: 3%;
 }
 
 

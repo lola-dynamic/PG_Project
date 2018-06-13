@@ -43,7 +43,7 @@
         </div>
         <div class= "col-md-4"> <img src="images/remita-payment-logo-vertical.png"> </div>
     </div>
-    <div class="bottom"><p>&copy;2016- 2017 Obafemi Awolowo University</p>
+    <div class="bottom"><p>&copy2017- 2018 Obafemi Awolowo University</p>
     </div>
 </div>
 
