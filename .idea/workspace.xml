@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e54b4630-90d3-4072-b7de-144638baeacf" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/admin.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/supervisor.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/GCA-project1.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/._Bondi - PSD Landing Page.psd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/._Business-Templates_.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/._Smak.psd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/._exolve-interns-webpage-test.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/Bondi - PSD Landing Page.psd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/Business-Templates_.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/Smak.psd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/HomePack/exolve-interns-webpage-test.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PG_Project/multipurpose-web-mock-up.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/connect.php" afterPath="$PROJECT_DIR$/connect.php" />
-      <change beforePath="$PROJECT_DIR$/footer.php" afterPath="$PROJECT_DIR$/footer.php" />
-      <change beforePath="$PROJECT_DIR$/header.php" afterPath="$PROJECT_DIR$/header.php" />
-      <change beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change beforePath="$PROJECT_DIR$/jumbotron.css" afterPath="$PROJECT_DIR$/jumbotron.css" />
-      <change beforePath="$PROJECT_DIR$/profile.php" afterPath="$PROJECT_DIR$/profile.php" />
-    </list>
+    <list default="true" id="e54b4630-90d3-4072-b7de-144638baeacf" name="Default" comment="" />
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -195,7 +172,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -292,18 +269,18 @@
       <workItem from="1528815902300" duration="4509000" />
       <workItem from="1528822760767" duration="21229000" />
       <workItem from="1528882977794" duration="383000" />
-      <workItem from="1528907481775" duration="2225000" />
+      <workItem from="1528907481775" duration="2855000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77943000" />
+    <option name="totallyTimeSpent" value="78573000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="697" height="735" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.82985556" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39525995" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
