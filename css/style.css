@@ -1,0 +1,8 @@
+body {
+    padding: 0 !important;
+}
+
+.content-wrapper {
+    margin-top: 140px;
+    min-height: 400px;
+}

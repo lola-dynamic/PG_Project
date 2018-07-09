@@ -1,6 +1,5 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
   padding-bottom: 20px;
 }
 
@@ -67,11 +66,9 @@ width: 100%;
 
 nav{
     background:#00375e;
-    height: 15%;
-    margin-top: 1%;
 }
-#navbar{
-    margin-top: 2%;
+.navbar{
+	min-height: 90px;
 }
 
 h3, p {
