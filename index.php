@@ -12,29 +12,38 @@
     </div>
 
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <img src="images/slide1.jpg" alt="oau-photo">
-            <div class="carousel-caption">
-                <h3>Welcome to OAU</h3>
-                <p>PG Serminar page</p>
-            </div>
-        </div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-        <div class="item">
-            <img src="images/oauf.jpg" alt="oau- photo">
-            <div class="carousel-caption">
-                <h3>Welcome to OAU</h3>
-                <p>PG Serminar page</p>
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="images/Untitled-2.jpg" alt="oau-photo">
+                <div class="carousel-caption">
+                    <h2>Welcome to OAU</h2>
+                    <h3>Computer Science and Engineering Department</h3>
+                </div>
             </div>
-        </div>
 
-        <div class="item">
-            <img src="images/slide1.jpg" alt="oau-photo">
-            <div class="carousel-caption">
-                <h3>Welcome to OAU</h3>
-                <p>PG Serminar page</p>
+            <div class="item">
+                <img src="images/slide.png" alt="oau- photo" img="responsive">
+                <div class="carousel-caption">
+                    <h2>Welcome to OAU</h2>
+                    <h3>Computer Science and Engineering Department</h3>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="images/untitled-2.jpg" alt="oau-photo">
+                <div class="carousel-caption">
+                    <h2>Welcome to OAU</h2>
+                    <h3>Computer Science and Engineering Department</h3>
+                </div>
             </div>
         </div>
     </div>

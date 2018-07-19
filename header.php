@@ -42,7 +42,7 @@ require ('connect.php');
         <div class="navbar-header">
             <div id="logo">
                 <a href="index.php">
-                    <img src="images/oaulogo.png" class="img-responsive">
+                    <img src="images/untitled-2-6.png" class="img-responsive">
                 </a>
             </div>
         </div>
@@ -52,15 +52,10 @@ require ('connect.php');
                 <li class="active"><a href="index.php">Home<span class="sr-only">(current)</span></a></li>
                 <li><a href="./">About Us</a></li>
                 <li><a href="../navbar-fixed-top/">Contact Us</a></li>
-                <!-- <li><a href="profile.php" data-rel="popup" class="btn btn-danger" onclick="myFunction()"> <i class="glyphicon glyphicon-user"></i>Sign Up</a></li> -->
-                <!-- <li><a href="profile.php" class=" btn btn-success"> <i class="glyphicon glyphicon-user"></i>Log In</a></li> -->
-                <li><a href="register.php" data-rel="popup" class="btn btn-danger"> <i class="glyphicon glyphicon-user"></i>Sign Up</a></li>
+                <li><a href="register.php"  class="btn btn-danger"> <i class="glyphicon glyphicon-user"></i>Sign Up</a></li>
                 <li><a href="login.php" class=" btn btn-success"> <i class="glyphicon glyphicon-user"></i>Log In</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!--<div class="container">-->
-<!--    -->
-<!--</div>-->

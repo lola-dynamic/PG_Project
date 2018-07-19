@@ -12,21 +12,6 @@
 </div>
 
 
-<script>
-    function myFunction() {
-        var form;
-        var name = prompt("Please enter your name:");
-        var regno = prompt("enter your registration no:");
-        var password = prompt("enter your password:");
-
-        if (name == null || name == "" && regno == null || regno == "" && password == null || password == "") {
-            alert("You have not fill up the fields");
-        } else {
-            form = "Hello" + name + ",You are welcome to seminar page!";
-        }
-        document.getElementById("demo").innerHTML = form;
-    }
-</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

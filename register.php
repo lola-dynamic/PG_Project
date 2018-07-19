@@ -1,46 +1,56 @@
 <?php 
-include('header.php'); 
+include('header.php');
 
-if(isset($_POST['submit']) && $_POST['submit'] == 'register') {
-    $name = $_POST['name'];
-    $username = $_POST['username'];
+//session_start();
+require ('connect.php');
+
+if(isset($_POST['register'])) {
     $reg_number = $_POST['reg_number'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
 
     // Validate input fields
 
-    if(empty($name)) {
-        $error = "Please enter your full name";
-    }
+    $result = $mysqli->query("SELECT * FROM users WHERE reg_number='$reg_number'");
+    $num_rows = mysqli_num_rows($result);
 
-    // check if there is no validation error
+    if ($result->num_rows > 0) {
 
-    if ($error == "") {
+        $_SESSION['message'] = "User with this registration number already exists!";
+    }else{
 
         // generate student's ID
         $studentId = "OAU".mt_rand(5,10000);
+//        $hash = $mysqli->escape_string( md5( rand(0,1000) ) );
         // insert into the database
-        $sql = "INSERT INTO users(name, username, reg_number,email, student_id) VALUES('$name', '$username', '$reg_number', '$email', '$studentId')";
+        $sql = "INSERT INTO users(reg_number, username, email, student_id) VALUES('$reg_number', '$username', '$email', '$studentId')";
+
+        $_SESSION['active'] = 1;
+        $_SESSION['logged_in'] = true; // So we know the user has logged in
 
         if(!mysqli_query($mysqli, $sql)) {
             echo ("Error Description: ".mysqli_error($mysqli));
         } else {
-            header("Location: http://abby.local/profile.php");
+            $_SESSION['message'] = "registration was successful";
+            header("Location: seminar_form.php");
+
+
         }
     }
 
 }
 ?>
 
-
-
+<?php if (isset($_SESSION['message'])) { echo $_SESSION['message']; } ?>
 <div class="content-wrapper">
+    <h3>Fill in your details</h3>
     <div class="row">
         <form class="form-vertical" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="name">Your full name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter your full name" id="name">
+                    <label for="reg_number">Registration Number</label>
+                    <input type="text" class="form-control" name="reg_number" placeholder="Enter your registration number" id="reg_number">
                 </div>
             </div>
 
@@ -53,21 +63,13 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'register') {
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="reg_number">Registration Number</label>
-                    <input type="text" class="form-control" name="reg_number" placeholder="Enter your registration number" id="reg_number">
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="form-group">
                     <label for="email"> Email </label>
                     <input type="email" class="form-control" name="email" placeholder="Enter your Email address" id="email">
                 </div>
             </div>
 
             <div class="form-group">
-            <input type="submit" name="submit" class="btn btn-success" value="register">
-            
+                <div><button type="submit" class="btn btn-success form-group" name="register">Register</button></div>
             </div>
         </form>
     </div>
