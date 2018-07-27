@@ -8,9 +8,16 @@ if(isset($_POST['register'])) {
     $reg_number = $_POST['reg_number'];
     $username = $_POST['username'];
     $email = $_POST['email'];
+//    $password = $_POST['password'];
 
-    // Validate input fields
+    // Escape all $_POST variables to protect against SQL injections
+    $first_name = $mysqli->escape_string($_POST['reg_number']);
+    $last_name = $mysqli->escape_string($_POST['username']);
+    $email = $mysqli->escape_string($_POST['email']);
+    $password = $mysqli->escape_string(password_hash($_POST['password'], PASSWORD_BCRYPT));
+    $hash = $mysqli->escape_string( md5( rand(0,1000) ) );
 
+    // Validate input fields that check if te user with the input field exists
     $result = $mysqli->query("SELECT * FROM users WHERE reg_number='$reg_number'");
     $num_rows = mysqli_num_rows($result);
 
@@ -23,7 +30,7 @@ if(isset($_POST['register'])) {
         $studentId = "OAU".mt_rand(5,10000);
 //        $hash = $mysqli->escape_string( md5( rand(0,1000) ) );
         // insert into the database
-        $sql = "INSERT INTO users(reg_number, username, email, student_id) VALUES('$reg_number', '$username', '$email', '$studentId')";
+        $sql = "INSERT INTO users(reg_number, username, email, password, student_id) VALUES('$reg_number', '$username', '$email', '$password', '$studentId')";
 
         $_SESSION['active'] = 1;
         $_SESSION['logged_in'] = true; // So we know the user has logged in
@@ -41,7 +48,7 @@ if(isset($_POST['register'])) {
 }
 ?>
 
-<?php if (isset($_SESSION['message'])) { echo $_SESSION['message']; } ?>
+<?php //if (isset($_SESSION['message'])) { echo $_SESSION['message']; } ?>
 <div class="content-wrapper">
     <h3>Fill in your details</h3>
     <div class="row">
@@ -61,10 +68,18 @@ if(isset($_POST['register'])) {
                 </div>
             </div>
 
+
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="email"> Email </label>
                     <input type="email" class="form-control" name="email" placeholder="Enter your Email address" id="email">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter your passsword" id="password">
                 </div>
             </div>
 

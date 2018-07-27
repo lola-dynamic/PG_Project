@@ -19,10 +19,11 @@ if (isset($_POST['submit_form'])) {
 //        var_dump($sql);
 
     $first_name     = $_POST['first_name'];
+    $middle_name     = $_POST['middle_name'];
     $last_name     = $_POST['last_name'];
     $reg_number   = $_POST['reg_number'];
     $loa   = $_POST['leave_absence'];
-    $submission_date  = $_POST['submission_date'];
+//    $submission_date  = $_POST['submission_date'];
     $project_title  = $_POST['project_title'];
     $seminar_type    = $_POST['seminar_type'];
     $dos     = $_POST['degree_study'];
@@ -42,8 +43,8 @@ if (isset($_POST['submit_form'])) {
     } else {
 
         // else proceed with the registration
-        $sql = "INSERT INTO form(first_name, last_name, reg_number, leave_absence, submission_date project_title, seminar_type, degree_study, phone_no, seminar_month, supervisors_name, hash)
- VALUES ('$first_name', '$last_name', '$reg_number', '$loa', '$submission_date' '$project_title', '$seminar_type', '$dos', '$phone_no', '$seminar_month', '$supervisors_name', '$hash')";
+        $sql = "INSERT INTO form(first_name, middle_name, last_name, reg_number, leave_absence, project_title, seminar_type, degree_study, phone_no, seminar_month, supervisors_name, hash)
+ VALUES ('$first_name', '$middle_name' '$last_name', '$reg_number', '$loa', '$project_title', '$seminar_type', '$dos', '$phone_no', '$seminar_month', '$supervisors_name', '$hash')";
 
         $Result = $mysqli->query($sql);
 
@@ -72,11 +73,8 @@ if (isset($_POST['submit_form'])) {
             header("location: profile.php");
             echo "registration successful";
 
-        }else {
-
-            echo "Registration failed, please try again.";
-
         }
+
 
     }
 
@@ -93,6 +91,11 @@ if (isset($_POST['submit_form'])) {
             <div class="form-group">
                 <label>First Name:</label>
                 <input type="text" class="form-control" name="first_name" required placeholder="FirstName">
+            </div>
+
+            <div class="form-group">
+                <label>middle Name:</label>
+                <input type="text" class="form-control" name="middle_name" placeholder="LastName">
             </div>
 
             <div class="form-group">
@@ -119,10 +122,10 @@ if (isset($_POST['submit_form'])) {
                 </select>
             </div>
 
-            <div class="form-group">
-                <label>Submission Date:</label>
-                <input type="datetime-local" class="form-control"  name="submission_date" required placeholder="submissiondate">
-            </div>
+<!--            <div class="form-group">-->
+<!--                <label>Submission Date:</label>-->
+<!--                <input type="datetime-local" class="form-control"  name="submission_date" required placeholder="submissiondate">-->
+<!--            </div>-->
 
             <div class="form-group">
                 <label>Project Title:</label>
@@ -130,18 +133,18 @@ if (isset($_POST['submit_form'])) {
             </div>
 
             <div class="form-group">
-                <label>Seminar Type:</label>
-                <input type="checkbox" class="" name="seminar_type" value="Concept">Concept &nbsp&nbsp
-                <input type="checkbox" class="" name="seminar_type" value="Progress">Progress &nbsp&nbsp
-                <input type="checkbox" class="" name="seminar_type" value="Public Lecture">Public Lecture &nbsp
+                <label>Seminar Type:&nbsp&nbsp</label>
+                <input type="radio" class="" name="seminar_type" value="Concept">Concept &nbsp&nbsp
+                <input type="radio" class="" name="seminar_type" value="Progress">Progress &nbsp&nbsp
+                <input type="radio" class="" name="seminar_type" value="Public Lecture">Public Lecture &nbsp
             </div>
 
             <div class="form-group">
                 <label>Degree of Study:&nbsp&nbsp</label>
-                <input type="checkbox" class="" name="degree_study" value="PGD">PGD &nbsp&nbsp
-                <input type="checkbox" class="" name="degree_study" value="MSc">MSc &nbsp&nbsp
-                <input type="checkbox" class="" name="degree_study" value="M Phil">M Phil &nbsp&nbsp
-                <input type="checkbox" class="" name="degree_study" value="PHD">PHD
+                <input type="radio" class="" name="degree_study" value="PGD">PGD &nbsp&nbsp
+                <input type="radio" class="" name="degree_study" value="MSc">MSc &nbsp&nbsp
+                <input type="radio" class="" name="degree_study" value="M Phil">M Phil &nbsp&nbsp
+                <input type="radio" class="" name="degree_study" value="PHD">PHD
             </div>
 
             <div class="form-group">
@@ -174,16 +177,18 @@ if (isset($_POST['submit_form'])) {
                 <select class="form-control" name="supervisor_name">
                     <option value="selectname" name="supervisor_name"  selected>Select Supervisor's Name</option>
 
-                    <option value="name" name="supervisor_name">NO</option>
-                    <option value="name" name="supervisor_name">1</option>
-                    <option value="name" name="supervisor_name">2</option>
-                    <option value="name" name="supervisor_name">3</option>
-                    <option value="name" name="supervisor_name">4</option>
-                    <option value="name" name="supervisor_name">5</option>
+                    <option value="name" name="supervisor_name">Dr Aina</option>
+                    <option value="name" name="supervisor_name">Dr Oluwaranti</option>
+                    <option value="name" name="supervisor_name">Ms Lawal</option>
+                    <option value="name" name="supervisor_name">Mr Ayeni</option>
+                    <option value="name" name="supervisor_name">Dr Afolabi</option>
+                    <option value="name" name="supervisor_name">Dr Akinyemi</option>
                 </select>
             </div>
 
-            <button class="btn btn-success btn-block" name="submit_form">Submit</button>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" name="submit_form">Submit Form</button>
+            </div>
         </form>
     </div>
 </div>

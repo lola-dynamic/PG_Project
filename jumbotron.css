@@ -68,6 +68,9 @@ body {
     text-align: center;
 }
 
+#link{
+	alignment: center;
+}
 
 .item img {
 width: 100%;

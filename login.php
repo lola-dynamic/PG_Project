@@ -49,15 +49,15 @@ if (isset($_POST['login'])) {
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Enter your username" id="username">
+                    <label for="email"> Email </label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter your Email address" id="email">
                 </div>
             </div>
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="email"> Email </label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter your Email address" id="email">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter your password" id="password">
                 </div>
             </div>
 
