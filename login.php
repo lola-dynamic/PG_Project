@@ -8,13 +8,16 @@ if (isset($_POST['login'])) {
     $email = $mysqli->escape_string($_POST['email']);
     $result = $mysqli->query("SELECT * FROM users WHERE email='$email'");
 
+
     if ($result->num_rows == 0) { // User doesn't exist
         $_SESSION['message'] = "User with that email doesn't exist!";
         header("location: login.php");
     } else { // User exists
         $user = $result->fetch_assoc();
+        // verify password
+        if (password_verify($_POST['password'], $user['password'])) {
 
-        if (password_verify($_POST['reg_number'], $user['reg_number'])) {
+            echo "Password verified";
 
             $_SESSION['reg_number'] = $user['reg_number'];
             $_SESSION['username'] = $user['username'];
@@ -26,8 +29,9 @@ if (isset($_POST['login'])) {
 
             header("location: seminar_form.php");
         } else {
-            $_SESSION['message'] = "You have entered wrong registration number, try again!";
-            header("location: seminar_form.php");
+//            die("Not verified");
+            $_SESSION['message'] = "You have entered wrong password, try again!";
+            header("location: login.php");
         }
     }
 }
@@ -36,6 +40,7 @@ if (isset($_POST['login'])) {
 
 
 <div class="content-wrapper">
+    <?php if (isset($_SESSION['message'])) { echo '<p>'.$_SESSION['message'].'</p>';} ?>
     <h3>Please Enter Your Details Here</h3>
     <div class="row">
         <form class="form-vertical" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">

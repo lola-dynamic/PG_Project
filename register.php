@@ -8,7 +8,7 @@ if(isset($_POST['register'])) {
     $reg_number = $_POST['reg_number'];
     $username = $_POST['username'];
     $email = $_POST['email'];
-//    $password = $_POST['password'];
+    $password = $_POST['password'];
 
     // Escape all $_POST variables to protect against SQL injections
     $first_name = $mysqli->escape_string($_POST['reg_number']);
@@ -18,13 +18,18 @@ if(isset($_POST['register'])) {
     $hash = $mysqli->escape_string( md5( rand(0,1000) ) );
 
     // Validate input fields that check if te user with the input field exists
-    $result = $mysqli->query("SELECT * FROM users WHERE reg_number='$reg_number'");
+    $result = $mysqli->query("SELECT * FROM users WHERE reg_number='$reg_number' OR email='$email'");
     $num_rows = mysqli_num_rows($result);
 
     if ($result->num_rows > 0) {
-
-        $_SESSION['message'] = "User with this registration number already exists!";
-    }else{
+        $user = $result->fetch_assoc();
+        if ($user['reg_number'] === $reg_number) {
+            $_SESSION['message'] = "User with this registration number already exists!";
+        } else if ($user['email'] === $email) {
+            $_SESSION['message'] = "User with this email address already exists!";
+        }
+    }
+    else{
 
         // generate student's ID
         $studentId = "OAU".mt_rand(5,10000);
@@ -34,14 +39,15 @@ if(isset($_POST['register'])) {
 
         $_SESSION['active'] = 1;
         $_SESSION['logged_in'] = true; // So we know the user has logged in
+        $_SESSION['reg_number'] = $reg_number;
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
 
         if(!mysqli_query($mysqli, $sql)) {
             echo ("Error Description: ".mysqli_error($mysqli));
         } else {
             $_SESSION['message'] = "registration was successful";
             header("Location: seminar_form.php");
-
-
         }
     }
 
@@ -50,6 +56,7 @@ if(isset($_POST['register'])) {
 
 <?php //if (isset($_SESSION['message'])) { echo $_SESSION['message']; } ?>
 <div class="content-wrapper">
+    <?php if (isset($_SESSION['message'])) { echo '<p>'.$_SESSION['message'].'</p>';} ?>
     <h3>Fill in your details</h3>
     <div class="row">
         <form class="form-vertical" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">

@@ -11,25 +11,53 @@
 <?php
 include ('header.php');
 
+include('./utility/Services.php');
+
 //session_start();
 require ('connect.php');
 
+// Redirect if not logged in
+
+if (!isset($_SESSION['username']) && !isset($_SESSION['logged_in'])) {
+    header('Location: index.php');
+}
+
+// fetch supervisor's details from database for the form
+$supervisors_table  = $mysqli->query("SELECT * FROM supervisors");
+
+// get reg number from the session
+$registration_number = '';
+if(isset($_SESSION['reg_number'])) {
+    $registration_number = $_SESSION['reg_number'];
+}
+
+
+
 if (isset($_POST['submit_form'])) {
 
-//        var_dump($sql);
+    $supervisor_name = $_POST['supervisor_name'];
+    $supervisor_email = '';
+
+    // fetch supervisor's email only
+    $supervisor  = $mysqli->query("SELECT * FROM supervisors WHERE name='$supervisor_name'");
+    $num_rows = mysqli_num_rows($supervisor);
+    if ($supervisor->num_rows > 0) {
+        $sup = $supervisor->fetch_assoc();
+        $supervisor_email = $sup['email'];
+    }
 
     $first_name     = $_POST['first_name'];
     $middle_name     = $_POST['middle_name'];
     $last_name     = $_POST['last_name'];
     $reg_number   = $_POST['reg_number'];
     $loa   = $_POST['leave_absence'];
-//    $submission_date  = $_POST['submission_date'];
     $project_title  = $_POST['project_title'];
     $seminar_type    = $_POST['seminar_type'];
     $dos     = $_POST['degree_study'];
     $phone_no     = $_POST['phone_no'];
     $seminar_month    = $_POST['seminar_month'];
-    $supervisors_name     = $_POST['supervisor_name'];
+    $student_email = $_SESSION['email'];
+
 
 //  TO HASH THE PASSWORD CODE GOES HERE
     $hash = $mysqli->escape_string( md5( rand(0,1000) ) );
@@ -40,44 +68,46 @@ if (isset($_POST['submit_form'])) {
 
         echo "User with this registration number already exists!";
 
+        die("User exist");
+
     } else {
 
         // else proceed with the registration
         $sql = "INSERT INTO form(first_name, middle_name, last_name, reg_number, leave_absence, project_title, seminar_type, degree_study, phone_no, seminar_month, supervisors_name, hash)
- VALUES ('$first_name', '$middle_name' '$last_name', '$reg_number', '$loa', '$project_title', '$seminar_type', '$dos', '$phone_no', '$seminar_month', '$supervisors_name', '$hash')";
+ VALUES ('$first_name','$middle_name', '$last_name', '$reg_number', '$loa', '$project_title', '$seminar_type', '$dos', '$phone_no', '$seminar_month', '$supervisor_name', '$hash')";
 
-        $Result = $mysqli->query($sql);
 
-        if ($Result) {
+        if(!mysqli_query($mysqli, $sql)) {
 
-            $_SESSION['active']     == 0;  // 0 untill supervisor approve the serminar form
-            $_SESSION['logged_in'] == true;
-            echo "  Hello  $first_name, Thank you for filling the form!<br> 
-            Confirmation link has been sent to $supervisor_name, please check your email $email
-                 account to se if your supervisor has approve your form!";
+            echo ("Error Description: ".mysqli_error($mysqli));
 
-            // Send registration confirmation link (verify.php)
-            $to      = $email;
-            $subject = 'Confirmation of Candidate Seminar Form ( abigailomolola1@gmail.com )';
-            $message_body = '
-        Hello '.$first_name.',
+        } else {
 
-        Thank you for signing up!
+            $_SESSION['active'] = 0;  // 0 untill supervisor approve the serminar form
 
-        Please click this link to activate your account:
+            $link = "http://".$_SERVER['SERVER_NAME']."/supervisor.php?email=$student_email&hash=$hash";
 
-        http://localhost/pg_project/supervisor.php?email='.$email.'&hash='.$hash;
 
-            mail( $to, $subject, $message_body );
+            $message_student = "<p>Hello  <b>$first_name</b></p><p>Thank you for filling the form!<br> 
+            A confirmation link has been sent to <b>$supervisor_name</b>. <br> Do ensure to check your 
+            email $student_email as a mail will be sent to you once your form has been approved!</p>";
 
-            header("location: profile.php");
-            echo "registration successful";
 
+            $message_supervisor = "<p>Hello <b>$supervisor_name</b>, <br> This is to notify you
+     that <b>$first_name</b> with the registration number of <b>$reg_number</b> just submitted the seminar form<br><br>
+       Kindly click the link below to approve it. <br><br>$link;
+     </p>";
+
+            // Send emails
+
+            $service = new Services();
+            $service->sendEmailToStudent($student_email, $message_student);
+            $service->sendEmailToSupervisor($supervisor_email, $message_supervisor);
+
+            echo  $message_student;
         }
 
-
     }
-
 }
 
 ?>
@@ -105,20 +135,19 @@ if (isset($_POST['submit_form'])) {
 
             <div class="form-group">
                 <label>Reg Number:</label>
-                <input type="text" class="form-control" name="reg_number"  required placeholder="Regnumber">
+                <input type="text" class="form-control" name="reg_number" value="<?php echo $registration_number ?>" autocomplete="off" required placeholder="Regnumber">
             </div>
 
             <div class="form-group">
-                <label>Leave Of Absence:</label>
+                <label>Leave Of Absence: ( No of semester )</label>
                 <select class="form-control" name="leave_absence">
-                    <option value="selectoption" name="leave_absence" selected>Select Any Option</option>
-
-                    <option value="No leave of absence" name="leave_absence">NO</option>
-                    <option value="No of Semester(s)" name="leave_absence">1</option>
-                    <option value="No of Semester(s)" name="leave_absence">2</option>
-                    <option value="No of Semester(s)" name="leave_absence">3</option>
-                    <option value="No of Semester(s)" name="leave_absence">4</option>
-                    <option value="No of Semester(s)" name="leave_absence">5</option>
+                    <option value="#" selected disabled>Select Any Option</option>
+                    <option value="none">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
             </div>
 
@@ -155,34 +184,37 @@ if (isset($_POST['submit_form'])) {
             <div class="form-group">
                 <label>Proposed Seminar Month:</label>
                 <select class="form-control" name="seminar_month">
-                    <option value="selectmonth" name="seminar_month"  selected>Select Month Option</option>
-
-                    <option value="month" name="seminar_month">January</option>
-                    <option value="month" name="seminar_month">February</option>
-                    <option value="month" name="seminar_month">March</option>
-                    <option value="month" name="seminar_month">April</option>
-                    <option value="month" name="seminar_month">May</option>
-                    <option value="month" name="seminar_month">June</option>
-                    <option value="month" name="seminar_month">July</option>
-                    <option value="month" name="seminar_month">August</option>
-                    <option value="month" name="seminar_month">September</option>
-                    <option value="month" name="seminar_month">October</option>
-                    <option value="month" name="seminar_month">November</option>
-                    <option value="month" name="seminar_month">December</option>
+                    <option value="#" selected disabled>Select Month Option</option>
+                    <option value="january">January</option>
+                    <option value="february">February</option>
+                    <option value="march">March</option>
+                    <option value="april">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Supervisor's Name:</label>
                 <select class="form-control" name="supervisor_name">
-                    <option value="selectname" name="supervisor_name"  selected>Select Supervisor's Name</option>
+                    <option value="#" selected disabled>Select Supervisor's Name</option>
 
-                    <option value="name" name="supervisor_name">Dr Aina</option>
-                    <option value="name" name="supervisor_name">Dr Oluwaranti</option>
-                    <option value="name" name="supervisor_name">Ms Lawal</option>
-                    <option value="name" name="supervisor_name">Mr Ayeni</option>
-                    <option value="name" name="supervisor_name">Dr Afolabi</option>
-                    <option value="name" name="supervisor_name">Dr Akinyemi</option>
+                    <?php
+                    $num_rows = mysqli_num_rows($supervisors_table);
+                    if ($supervisors_table->num_rows > 0) {
+                    while($supervisor = $supervisors_table->fetch_assoc()) {
+                        echo('<option value="'.$supervisor['name'].'">'.$supervisor['name'].'</option>');
+                    }
+
+                    }
+                    ?>
+
                 </select>
             </div>
 
