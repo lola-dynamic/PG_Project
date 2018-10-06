@@ -60,13 +60,14 @@ if (isset($_POST['submit_form'])) {
     $last_name     = $_POST['last_name'];
     $registration_number   = $_POST['reg_number'];
     $regno   = $_POST['regno'];
-    $loa   = $_POST['leave_absence'];
+    $loa   = (int)$_POST['leave_absence'];
     $project_title  = $_POST['project_title'];
     $seminar_type    = isset($_POST['seminar_type']) ? $_POST['seminar_type'] : '';
     $dos     = $_POST['degree_study'];
     $phone_no     = $_POST['phone_no'];
     $seminar_month    = $_POST['seminar_month'];
     $student_email = $_SESSION['email'];
+    $co_sup_name = $_POST['co_sup_name'];
 
     // Check input
     if (empty($first_name)) {
@@ -144,8 +145,8 @@ if (isset($_POST['submit_form'])) {
     } else {
 
         // else proceed with the registration
-        $sql = "INSERT INTO form(first_name, middle_name, last_name, reg_number, leave_absence, project_title, seminar_type, degree_study, document, phone_no, seminar_month, supervisor_name, hash)
- VALUES ('$first_name','$middle_name', '$last_name', '$regno', '$loa', '$project_title', '$seminar_type', '$dos', '$file', '$phone_no', '$seminar_month', '$supervisor_name', '$hash')";
+        $sql = "INSERT INTO form(first_name, middle_name, last_name, reg_number, leave_absence, project_title, seminar_type, degree_study, document, phone_no, seminar_month, supervisor_name, co_sup_name, hash)
+ VALUES ('$first_name','$middle_name', '$last_name', '$regno', '$loa', '$project_title', '$seminar_type', '$dos', '$file', '$phone_no', '$seminar_month', '$supervisor_name', '$co_sup_name', '$hash')";
 
 
         if(!mysqli_query($con, $sql)) {
@@ -316,12 +317,12 @@ if (isset($_POST['submit_form'])) {
 
             <div class="form-group">
                 <label>Co-Supervisor Name:</label>
-                <textarea class="form-control" name="co_sup_name" required placeholder="e.g. Dr/Prof example"></textarea>
+                <textarea class="form-control" name="co_sup_name"  placeholder="e.g. Dr/Prof example"></textarea>
             </div>
 
             <div class="form-group">
                 <label>Co-Supervisor Email:</label>
-                <textarea class="form-control" name="co_sup_email" required placeholder="e.g. example@gmail.com"></textarea>
+                <textarea class="form-control" name="co_sup_email" placeholder="e.g. example@gmail.com"></textarea>
             </div>
 
 
