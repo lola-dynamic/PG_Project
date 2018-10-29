@@ -11,10 +11,20 @@
                 $semester = $_POST['current_semester'];
                 $sql = $database->saveConfiguration($semester);
 
-                if (!$sql) {
-                    echo "Error occurred";
-                } else {
+                if($sql) {
+                    $students = $database->fetchAllStudent();
+                    $service = new Services();
+
+                    foreach ($students as $student) {
+                        $stdSemester = $service->finalSemesterUsingLeaveOfAbsence($student['reg_number'], 'none');
+                        $database->updateStudentSemester($stdSemester, $student['reg_number']);
+                    }
+
                     echo "Current semester set successfully";
+
+                } else {
+                    echo "Error occurred";
+
                 }
             }
 

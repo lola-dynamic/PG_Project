@@ -41,9 +41,14 @@
                                         <tr role="row">
                                             <th>No</th>
                                             <th>Email</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Degree</th>
+                                            <th>Seminar Type</th>
+                                            <th>Supervisor Name</th>
+                                            <th>Necessary Doc</th>
+                                            <th>Project Title</th>
                                             <th>Registration Number</th>
-                                            <th>Student Id</th>
-                                            <th>Date</th>
                                         </tr>
                                         </thead>
 
@@ -55,8 +60,14 @@
                                                     '<tr role="row" class="odd">'.
                                                     '<td class="sorting_1"></td>'.
                                                     '<td>'.$user['email'].'</td>'.
+                                                    '<td>'.$user['first_name'].'</td>'.
+                                                    '<td>'.$user['last_name'].'</td>'.
+                                                    '<td>'.$user['degree'].'</td>'.
+                                                    '<td>'.$user['seminar_type'].'</td>'.
+                                                    '<td>'.$user['supervisor_name'].'</td>'.
+                                                    '<td>'.$user['necessary_doc'].'</td>'.
+                                                    '<td>'.$user['project_title'].'</td>'.
                                                     '<td>'.$user['reg_number'].'</td>'.
-                                                    '<td>'.$user['student_id'].'</td>'.
 //                                                    '<td>'.$user['seminar_month'].'</td>'.
                                                     '</tr>'
                                                 );

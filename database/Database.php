@@ -92,6 +92,28 @@ class Database
         return $student_semester;
     }
 
+    public function updateFormSemester($semester, $reg_number)
+    {
+        $reg_number = (int)$reg_number;
+        $student_semester = $this->link->query("UPDATE form SET no_of_semester ='$semester' WHERE reg_number ='$reg_number'");
+//
+        return $student_semester;
+    }
+
+    public function removeScheduledCandidate($reg_number)
+    {
+        $candidate = $this->link->query("UPDATE prioritize SET scheduled_for_seminar = 0 WHERE reg_number ='$reg_number'");
+//
+        return $candidate;
+    }
+
+    public function addScheduledCandidate($reg_number)
+    {
+        $candidate = $this->link->query("UPDATE prioritize SET scheduled_for_seminar = 1 WHERE reg_number ='$reg_number'");
+//
+        return $candidate;
+    }
+
 
 //    public function showAllCandidate()
 //    {

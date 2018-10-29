@@ -3,7 +3,8 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-include "$_SERVER[DOCUMENT_ROOT]/pg_project/database/Database.php";
+include "$_SERVER[DOCUMENT_ROOT]/pg_project/utility/Services.php";
+
 $database = new Database();
 $user_table = $database->fetchAllStudent();
 $forms_table = $database->fetchAllForms();

@@ -38,6 +38,7 @@ $num_rows = mysqli_num_rows($student);
 if ($student->num_rows > 0) {
     $sup = $student->fetch_assoc();
     $student_id = $sup['student_id'];
+    $email = $sup['email'];
 }
 
 if (isset($_POST['submit_form'])) {
@@ -110,7 +111,7 @@ if (isset($_POST['submit_form'])) {
     $target_file = $target_dir.basename($file);
     $documentType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    if($file) {
+    if(@$file) {
         if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$file)){
             echo "Your file ".basename($file)."was successfully uploaded";
         }
@@ -145,8 +146,8 @@ if (isset($_POST['submit_form'])) {
     } else {
 
         // else proceed with the registration
-        $sql = "INSERT INTO form(first_name, middle_name, last_name, reg_number, leave_absence, project_title, seminar_type, degree_study, document, phone_no, seminar_month, supervisor_name, co_sup_name, hash)
- VALUES ('$first_name','$middle_name', '$last_name', '$regno', '$loa', '$project_title', '$seminar_type', '$dos', '$file', '$phone_no', '$seminar_month', '$supervisor_name', '$co_sup_name', '$hash')";
+        $sql = "INSERT INTO form(email, first_name, middle_name, last_name, reg_number, leave_absence, project_title, seminar_type, degree_study, document, phone_no, seminar_month, supervisor_name, co_sup_name, hash)
+ VALUES ('$email','$first_name','$middle_name', '$last_name', '$regno', '$loa', '$project_title', '$seminar_type', '$dos', '$file', '$phone_no', '$seminar_month', '$supervisor_name', '$co_sup_name', '$hash')";
 
 
         if(!mysqli_query($con, $sql)) {
@@ -165,13 +166,13 @@ if (isset($_POST['submit_form'])) {
 
 
             $message_supervisor = "<p>Hello <b>$supervisor_name</b>, <br> This is to notify you
-     that <b>$first_name $last_name</b> with the registration number of <b>$regno</b> just submitted the seminar form on the topic: <br>$project_title</br>.<br><br>
-       Kindly click the link below to approve it. <br><br>$link;
+     that <b>$first_name&nbsp; $last_name</b> a <b>$dos</b> student, with the registration number of <b>$regno</b> just submitted the seminar form on the topic: <b> <br>$project_title</br></b>.
+     <br>on <b>$seminar_type</b> presentation<br><br><br> Kindly click the link below to approve it. <br><br>$link;
      </p>";
 
              $message = "<p>Hello, <b>Dr Segun Aina</b>, <br> This is to notify you
-      that <b>$first_name $last_name</b> with the registration number of <b>$regno</b> just submitted the seminar form on the topic: <br>$project_title</br><br><br>
-        and supervisor's name is $supervisor_name.
+      that <b>$first_name &nbsp; $last_name</b> a <b>$dos</b> student, with the registration number of <b>$regno</b> just submitted the seminar form on <b>$seminar_month</b> with the topic: <b><br>$project_title</br></b>
+      <br>on <b>$seminar_type</b> presentation<br> and supervisor's name is $supervisor_name.
       </p>";
 
             // Send emails
@@ -190,6 +191,7 @@ if (isset($_POST['submit_form'])) {
             }
             $database = new Database();
             $database->updateStudentSemester($semester, $regno);
+            $database->updateFormSemester($semester, $regno);
 
             echo  $message_student;
         }
@@ -202,11 +204,11 @@ if (isset($_POST['submit_form'])) {
 ?>
 
 
-<div class="content-wrapper">
+<!--<div class="content-wrapper">-->
     <div class="seminar_form">
 <!--        <div><h3>--><?php //echo @$student_id?><!--</h3></div>-->
         <div class="form">
-            <p>SEMINAR FORM<span class="fa fa-2x fa-pencil"></span></div></p>
+            <p>SEMINAR FORM<span class="fa fa-2x fa-pencil"></span></p></div>
         <form class="" method="POST" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
             <input type="hidden" name="regno" value="<?php echo $registration_number; ?>" />
             <div class="form-group">
@@ -332,7 +334,7 @@ if (isset($_POST['submit_form'])) {
             </div>
         </form>
     </div>
-</div>
+<!--</div>-->
 
 <script>
     function pgdClicked() {

@@ -27,7 +27,11 @@ $edit_form_link = "http://".$_SERVER['SERVER_NAME']."/pg_project/edit-form.php?i
 
 if (isset($_POST['submit_approval'])) {
 
-
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $dos = $_POST['degree_study'];
+    $seminar_type = $_POST['seminar_type'];
+    $loa = $_POST['leave_absence'];
     $proposed_seminar_month = $_POST['proposed_seminar_month'];
     $approved = $_POST['approved'];
     $seminar_date = $_POST['seminar_date'];
@@ -127,7 +131,10 @@ if (isset($_POST['submit_approval'])) {
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
     <div class="container">
-        <p> PLEASE FILL IN THE CONFIRMATION FORM BELOW.<span class="fa fa-2x fa-pencil"></span></div></p>
+        <p> PLEASE FILL IN THE FORM BELOW.<span class="fa fa-2x fa-pencil"></span></div></p>
+
+            <div><h3>On the seminar form submitted by<?php echo $first_name; $last_name?>on the <?php echo $dos; $seminar_type?>presentation</h3></div>
+
     <form class="" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
 
         <div class="form-group">
@@ -150,8 +157,10 @@ if (isset($_POST['submit_approval'])) {
             </select>
         </div>
 
+        <div><h3>here is the <b><?php echo $loa?>semester(s)</b>leave of absence taken by the candidate</h3></div>
+
         <div class="form-group">
-            <label>Tick the box for Candidate Approval:&nbsp</label>
+            <label>please select any button for the Candidate Approval:&nbsp</label>
             <input type="radio" class="" name="approved" value="1"> YES&nbsp&nbsp
             <input type="radio" class="" name="approved" value="0"> NO
         </div>
@@ -166,12 +175,7 @@ if (isset($_POST['submit_approval'])) {
             <textarea class="form-control" name="comments" placeholder="Comment"></textarea>
         </div>
 
-<!--        <div class="form-group">-->
-<!--            <label>Confirm The Candidate Leave Of Absence:&nbsp</label>-->
-<!--            <input type="radio" class="" name="seminar_type" value="Yes">YES&nbsp&nbsp-->
-<!--            <input type="radio" class="" name="seminar_type" value="No">NO-->
-<!--        </div>-->
-
+        <p>Please click the <b>"Edit Form"</b> button below to check or edit the form the candidate has submitted.</p>
         <div class="form-group">
             <button type="submit" class="btn btn-success" name="submit_approval">Submit</button>
             <a href="<?php echo $edit_form_link ?>" target="_blank">

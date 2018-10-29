@@ -43,29 +43,29 @@ require ('connect.php');
         <div class="navbar-header">
             <div id="logo">
                 <a href="index.php">
-                    <img src="images/untitled-2-6.png" class="img-responsive">
+                    <img src="images/untitled-2-6.png" class="img-responsive" style="width: 55%; margin-top: 15px">
                 </a>
             </div>
         </div>
 
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.php">Home<span class="sr-only">(current)</span></a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
+        <div id="navbar" class="navbar-collapse collapse" >
+            <ul class="nav navbar-nav navbar-right" style="margin-top: 20px;">
+                <li class="active"><a href="index.php" style="color: #b7c12f ;">Home<span class="sr-only">(current)</span></a></li>
+                <li><a href="about.php" style="color: #b7c12f ;">About Us</a></li>
+                <li><a href="contact.php" style="color: #b7c12f ;">Contact Us</a></li>
 
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 
                     $user = $_SESSION['username'];
-                    echo ('<li><a href="#"  class="btn btn-default"> <i class="glyphicon glyphicon-user"></i> Welcome ' .$user. '</a></li>');
-                    echo ('<li><a href="seminar_form.php"  class="btn btn-default"> <i class="glyphicon glyphicon-user"></i> Form </a></li>');
+                    echo ('<li><a href="#"  class="btn btn-default" style="margin-bottom: 10px; margin-right: 4px"> <i class="glyphicon glyphicon-user"></i> Welcome ' .$user. '</a></li>');
+                    echo ('<li><a href="seminar_form.php"  class="btn btn-default" > <i class="glyphicon glyphicon-user"></i> Form </a></li>');
                     echo ('<li><a href="logout.php"  class="btn btn-default"> <i class="glyphicon glyphicon-user"></i> Logout </a></li>');
 
                 } else {
                     ?>
-                    <li><a href="register.php"  class="btn btn-danger"> <i class="glyphicon glyphicon-user"></i>Sign Up</a></li>
-                    <li><a href="login.php" class=" btn btn-success"> <i class="glyphicon glyphicon-user"></i>Log In</a></li>
+                    <li><a href="register.php"  class="btn btn-danger" style="height: 40px; padding-top: 10px; margin-right: 10px"> <i class="glyphicon glyphicon-user"></i>Sign Up</a></li>
+                    <li><a href="login.php" class=" btn btn-success" style="height: 40px; padding-top: 10px; margin-right: 10px"> <i class="glyphicon glyphicon-user"></i>Log In</a></li>
                     <?php
                 }
                 ?>

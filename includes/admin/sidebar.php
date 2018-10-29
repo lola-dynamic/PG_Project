@@ -22,7 +22,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span> Priority List </span>
+                    <i class="fa fa-dashboard"></i> <span> Scheduled List </span>
                 </a>
 
                 <ul class="treeview-menu">

@@ -6,9 +6,9 @@ body {
 
 #logo{
 	float:left;
-	width: 50%;
+	width: 30%;
 	height: 30%;
-	margin-left: 30px;
+	margin-left: 10px;
 	/*background-color: #00375e;*/
 }
 
@@ -16,74 +16,36 @@ body {
 	color: #00375e ;
 }
 
-#logo img{
-	width: 100%;
-	height: 100%;
-}
+/*#logo img{*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+/*}*/
 
 .jumbotron {
-	/*background-image: url('images/background.jpg');*/
-	/*background-color: #2b669a;*/
 	background-size: cover;
 	/*padding-top: 100px;*/
 }
-
-/*.box-radius {*/
-/*background-color:#090;   !* This color is green*!*/
-/*width: 100%;*/
-/*padding: 80px;*/
-/*border-radius: 100%;*/
-/*text-align: center;*/
-/*margin-bottom: 10px*/
-/*}*/
-
-/*.box-radius.blue {*/
-/*background: blue;*/
-/*}*/
-
-
-/*.box-radius.green {*/
-/*background: #009900;*/
-/*}*/
-
-/*.box-radius.orange {*/
-/*background: orange;*/
-/*}*/
-
-
-
-/*.box-radius img {*/
-/*width: 100%;*/
-/*}*/
-
-/*.box-radius span {*/
-/*font-size: 30px;*/
-/*color: white;*/
-/*}*/
-
-
-/**/
-
-
-/*#message{*/
-/*margin-top: 20%;*/
-/*text-align: center;*/
-/*}*/
 
 #link{
 	alignment: center;
 }
 
-.item img {
-	width: 100%;
+/*.item img {*/
+	/*width: 100%;*/
+/*}*/
+
+#navbar{
+	width: 80%;
 }
 
-nav{
+nav {
 	background-color: #00375e;
 }
+
 .navbar-info{
 	min-height: 100px;
 	background-color: #00375e;
+	color: #b7c12f ;
 }
 
 h3, p {
@@ -95,6 +57,7 @@ h3, p {
 	max-width: 20%;
 	margin: 0 auto;
 	border: 0.5px solid #16507c;
+	/*background: #aab6c4;*/
 }
 
 .seminar_form{
@@ -110,8 +73,6 @@ h3, p {
 	background:#000000;
 	margin-top: 3%;
 }
-
-
 
 
 

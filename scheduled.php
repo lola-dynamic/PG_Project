@@ -1,4 +1,26 @@
-<?php include "$_SERVER[DOCUMENT_ROOT]/pg_project/includes/layout/admin-header.php";?>
+<?php include "$_SERVER[DOCUMENT_ROOT]/pg_project/includes/layout/admin-header.php";
+
+if(isset($_POST['remove-candidate'])){
+    $database = new Database();
+    $reg_number = $_POST['reg_number'];
+    $delete_candidate = $database->removeScheduledCandidate($reg_number);
+
+    $message_student = "<p>This is notity you that your seminar has been cancelled</p>";
+
+
+    if($delete_candidate){
+        $service = new Services();
+        $service->sendEmailToRemovedStudent($_POST['email'], $message_student);
+
+        echo 'Candidate successfully deleted';
+    }else {
+        echo 'An error occurred, please try again';
+    }
+
+}
+
+
+?>
     <main>
 
         <div class="content-wrapper">
@@ -41,9 +63,15 @@
                                         <tr role="row">
                                             <th>No</th>
                                             <th>Email</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Degree</th>
+                                            <th>Seminar Type</th>
+                                            <th>Supervisor Name</th>
+                                            <th>Necessary Doc</th>
+                                            <th>Project Title</th>
                                             <th>Registration Number</th>
-                                            <th>Student Id</th>
-                                            <th>Date</th>
+                                            <th>Remove</th>
                                         </tr>
                                         </thead>
 
@@ -55,9 +83,23 @@
                                                     '<tr role="row" class="odd">'.
                                                     '<td class="sorting_1"></td>'.
                                                     '<td>'.$user['email'].'</td>'.
+                                                    '<td>'.$user['first_name'].'</td>'.
+                                                    '<td>'.$user['last_name'].'</td>'.
+                                                    '<td>'.$user['degree'].'</td>'.
+                                                    '<td>'.$user['seminar_type'].'</td>'.
+                                                    '<td>'.$user['supervisor_name'].'</td>'.
+                                                    '<td>'.$user['necessary_doc'].'</td>'.
+                                                    '<td>'.$user['project_title'].'</td>'.
                                                     '<td>'.$user['reg_number'].'</td>'.
-                                                    '<td>'.$user['student_id'].'</td>'.
-//                                                    '<td>'.$user['seminar_month'].'</td>'.
+                                                    '<td>
+                                                            <form method="post" action="">
+                                                            <input type="hidden" name="reg_number" value="'.$user['reg_number'].'">
+                                                            <input type="hidden" name="email" value="'.$user['email'].'">
+
+                                                               <button class="btn btn-danger" type="submit" name="remove-candidate"><span class="fa fa-edit"></span>Remove</button>
+                                                            </form>
+                                                                            
+                                                        </td>'.
                                                     '</tr>'
                                                 );
                                             }
